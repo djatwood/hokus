@@ -81,6 +81,7 @@ The value must match the version you want from the Hugo Releases page (in Hugo G
                     tip: "sample: Awesome Post"
                   },
                   { key: "folder", title: "Folder", type: "string", required: true, tip: "Sample: content/posts/" },
+                  { key: "match", title: "File Match", type: "string", required: true, tip: "A glob pattern. Default: '**/*' matches all files recursively." },
                   {
                     key: "extension",
                     title: "File Extension",

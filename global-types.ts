@@ -68,6 +68,7 @@ export type CollectionConfig = {
   itemtitle: string;
   fields: Array<any>;
   folder: string;
+  match: string;
   extension: string;
   dataformat: string;
 };

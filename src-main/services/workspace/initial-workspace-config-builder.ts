@@ -36,6 +36,7 @@ class InitialWorkspaceConfigBuilder {
           key: "posts",
           title: "Posts",
           folder: "content/posts/",
+          match: "**/index",
           extension: "md",
           dataformat: opts.ext,
           itemtitle: "Post",

@@ -208,7 +208,7 @@ class WorkspaceService {
 
     let supportedContentExt = ["md", "html", "markdown"];
     if (collection.folder.startsWith("content") || supportedContentExt.indexOf(collection.extension) !== -1) {
-      let globExpression = path.join(folder, `**/index.{${supportedContentExt.join(",")}}`);
+      let globExpression = path.join(folder, `${collection.match}.{${supportedContentExt.join(",")}}`);
       let files = await globJob(globExpression, {});
       return files.map((item: any) => {
         let key = item.replace(folder, "").replace(/^\//, "");
@@ -217,7 +217,7 @@ class WorkspaceService {
       });
     } else {
       //data folder and everything else
-      let globExpression = path.join(folder, `**/*.{${formatProviderResolver.allFormatsExt().join(",")}}`);
+      let globExpression = path.join(folder, `${collection.match}.{${formatProviderResolver.allFormatsExt().join(",")}}`);
       let files = await globJob(globExpression, {});
       return files.map((item: any) => {
         let key = item.replace(folder, "");

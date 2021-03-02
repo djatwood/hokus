@@ -124,6 +124,11 @@ class WorkspaceConfigValidator {
           .regex(/^(?!.*[.][.]).*$/)
           .required()
           .error(new Error("The collection folder value is invalid.")),
+        match: joi
+          .string()
+          .trim()
+          .required()
+          .error(new Error("The collection match value is invalid.")),
         itemtitle: joi
           .string()
           .trim()
