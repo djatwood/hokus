@@ -175,13 +175,9 @@ class WorkspaceService {
 
     const isContentFile = collection.folder.startsWith("content");
 
-    if (isContentFile) {
-      returnedKey = path.join(collectionItemKey, "index." + collection.extension);
-      filePath = path.join(this.workspacePath, collection.folder, returnedKey);
-    } else {
-      returnedKey = collectionItemKey + "." + collection.extension;
-      filePath = path.join(this.workspacePath, collection.folder, returnedKey);
-    }
+    returnedKey = collectionItemKey + "." + collection.extension;
+    filePath = path.join(this.workspacePath, collection.folder, returnedKey);
+
     if (fs.existsSync(filePath)) return { unavailableReason: "already-exists" };
 
     await fs.ensureDir(path.dirname(filePath));
@@ -529,7 +525,7 @@ class WorkspaceService {
     let serveConfig;
     if (workspaceDetails.serve && workspaceDetails.serve.length) {
       serveConfig = this._findFirstMatchOrDefault(workspaceDetails.serve, "");
-    } else serveConfig = { config: "" };   
+    } else serveConfig = { config: "" };
 
     let hugoServerConfig = {
       config: serveConfig.config,
