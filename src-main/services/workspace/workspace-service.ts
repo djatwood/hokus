@@ -13,6 +13,7 @@ import pathHelper from "../../path-helper.js";
 import HugoServer from "../../hugo/hugo-server.js";
 import { appEventEmitter } from "../../app-event-emmiter.js";
 import { hugoDownloader } from "../../hugo/hugo-downloader.js";
+import { ReplayRounded } from "@material-ui/icons";
 
 class WorkspaceService {
   workspacePath: string;
@@ -208,7 +209,8 @@ class WorkspaceService {
       let files = await globJob(globExpression, {});
       return files.map((item: any) => {
         let key = item.replace(folder, "").replace(/^\//, "");
-        let label = key.replace(/^\/?(.+)\/[^\/]+$/, "$1");
+        let label = key.replace(path.extname(item), "");
+        if (label.endsWith("index")) label = label.replace(/[/|\\]index/, "")
         return { key, label };
       });
     } else {
